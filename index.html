@@ -601,6 +601,132 @@
                 scroll-behavior: auto !important;
             }
         }
+        /* ───── Intro (top) ───── */
+        .intro {
+            min-height: 72vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            gap: 1.1rem;
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 5rem 1.5rem 3rem;
+        }
+        .intro-text {
+            font-size: clamp(1.05rem, 2.3vw, 1.55rem);
+            line-height: 1.5;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            text-shadow: var(--gold-glow);
+            opacity: 0;
+            animation: rise 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) 0.45s forwards;
+        }
+        .intro-text .accent { color: var(--gold-bright); font-weight: 700; }
+        .intro-name {
+            font-size: clamp(2.4rem, 7vw, 4.5rem);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1.04;
+            color: var(--ink);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: rise 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) 0.7s forwards;
+        }
+        .intro-sub {
+            font-family: var(--mono);
+            font-size: clamp(0.72rem, 1.4vw, 0.9rem);
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            text-indent: 0.4em;
+            color: var(--ink-mute);
+            opacity: 0;
+            animation: rise 1s cubic-bezier(0.2, 0.8, 0.2, 1) 0.95s forwards;
+        }
+
+        /* ───── Accordion (collapsible sections) ───── */
+        .accordion {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem 4rem;
+        }
+        .acc { border-top: 1px solid var(--gold-faint); }
+        .acc:last-of-type { border-bottom: 1px solid var(--gold-faint); }
+
+        .acc-head {
+            list-style: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            padding: 1.7rem 0.4rem;
+            transition: padding-left 0.3s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .acc-head::-webkit-details-marker { display: none; }
+        .acc-head::marker { content: ''; }
+        .acc-head:hover { padding-left: 0.9rem; }
+        .acc-head:focus-visible { outline: 1px solid var(--gold-soft); outline-offset: 4px; }
+        .acc-num {
+            font-family: var(--mono);
+            font-size: 0.78rem;
+            color: var(--gold);
+            letter-spacing: 0.22em;
+            text-shadow: var(--gold-glow);
+        }
+        .acc-title {
+            flex: 1;
+            font-size: clamp(1.3rem, 3vw, 2rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--ink);
+            text-transform: uppercase;
+        }
+        .chevron {
+            width: 11px; height: 11px;
+            border-right: 2px solid var(--gold);
+            border-bottom: 2px solid var(--gold);
+            transform: rotate(45deg);
+            transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+            margin: 0 0.5rem;
+            flex-shrink: 0;
+        }
+        .acc[open] .chevron { transform: rotate(-135deg); }
+
+        .acc-body {
+            padding: 0 0.4rem 2.5rem;
+            animation: accIn 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        @keyframes accIn {
+            from { opacity: 0; transform: translateY(-8px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .acc-body .portfolio { padding: 0; margin: 0; max-width: none; }
+        .acc-placeholder {
+            color: var(--ink-mute);
+            font-size: 0.95rem;
+            line-height: 1.65;
+            padding: 0.25rem 0;
+        }
+        .index-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+        .index-list a {
+            display: inline-block;
+            color: var(--ink);
+            text-decoration: none;
+            font-family: var(--mono);
+            font-size: 0.95rem;
+            letter-spacing: 0.06em;
+            transition: color 0.3s ease, padding-left 0.3s ease;
+        }
+        .index-list a:hover { color: var(--gold); padding-left: 0.4rem; }
+
     </style>
 </head>
 <body>
@@ -628,39 +754,88 @@
     <header class="page-header">
         <span class="name">Changhun Lee</span>
         <nav class="nav">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
+            <a href="#index">Index</a>
+            <a href="#career">Career</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#certification">Cert</a>
             <a href="#project">Project</a>
-            <a href="#contact">Contact</a>
+            <a href="#history">History</a>
         </nav>
     </header>
 
-    <main id="home" class="stage">
-        <div class="hero-card">
-            <p class="greeting">Hello,</p>
-            <h1>I'm Changhun Lee.</h1>
-            <div class="divider"></div>
-            <h2>AI Camp · 6th Cohort</h2>
-        </div>
-    </main>
-
-    <div class="marker">
-        <span class="num">01 — About</span>
-        <span class="rule"></span>
-    </div>
-    <section id="about">
-        <p class="about-text">
+    <!-- Intro -->
+    <main id="home" class="intro">
+        <p class="greeting">Hello,</p>
+        <p class="intro-text">
             A music major designing AI services —<br>
             where <span class="accent">melody meets machine</span>.
         </p>
-    </section>
+        <h1 class="intro-name">Changhun Lee</h1>
+        <p class="intro-sub">AI Camp · 6th Cohort</p>
+    </main>
 
-    <div class="marker">
-        <span class="num">02 — Selected Works</span>
-        <span class="rule"></span>
-    </div>
-    <section id="project" class="portfolio">
-        <div class="cards">
+    <!-- Collapsible sections -->
+    <div class="accordion">
+
+        <details class="acc" id="index">
+            <summary class="acc-head">
+                <span class="acc-num">01</span>
+                <span class="acc-title">Index</span>
+                <span class="chevron" aria-hidden="true"></span>
+            </summary>
+            <div class="acc-body">
+                <ul class="index-list">
+                    <li><a href="#career">Career</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#certification">Certification</a></li>
+                    <li><a href="#project">My Project</a></li>
+                    <li><a href="#history">My History</a></li>
+                </ul>
+            </div>
+        </details>
+
+        <details class="acc" id="career">
+            <summary class="acc-head">
+                <span class="acc-num">02</span>
+                <span class="acc-title">Career</span>
+                <span class="chevron" aria-hidden="true"></span>
+            </summary>
+            <div class="acc-body">
+                <p class="acc-placeholder">경력 내용을 여기에 추가하세요.</p>
+            </div>
+        </details>
+
+        <details class="acc" id="portfolio">
+            <summary class="acc-head">
+                <span class="acc-num">03</span>
+                <span class="acc-title">Portfolio</span>
+                <span class="chevron" aria-hidden="true"></span>
+            </summary>
+            <div class="acc-body">
+                <p class="acc-placeholder">포트폴리오 내용을 여기에 추가하세요.</p>
+            </div>
+        </details>
+
+        <details class="acc" id="certification">
+            <summary class="acc-head">
+                <span class="acc-num">04</span>
+                <span class="acc-title">Certification</span>
+                <span class="chevron" aria-hidden="true"></span>
+            </summary>
+            <div class="acc-body">
+                <p class="acc-placeholder">자격증 내용을 여기에 추가하세요.</p>
+            </div>
+        </details>
+
+        <details class="acc" id="project" open>
+            <summary class="acc-head">
+                <span class="acc-num">05</span>
+                <span class="acc-title">My Project</span>
+                <span class="chevron" aria-hidden="true"></span>
+            </summary>
+            <div class="acc-body">
+                <section class="portfolio">
+                    <div class="cards">
             <!-- Artistr: concert hall stage with curtains, spotlights, audience -->
             <a class="card card--hall" href="https://www.artistr.co.kr"
                target="_blank" rel="noopener noreferrer">
@@ -967,12 +1142,23 @@
             </a>
         </div>
     </section>
+            </div>
+        </details>
 
-    <div class="marker">
-        <span class="num">03 — Contact</span>
-        <span class="rule"></span>
-    </div>
-    <footer id="contact">
+        <details class="acc" id="history">
+            <summary class="acc-head">
+                <span class="acc-num">06</span>
+                <span class="acc-title">My History</span>
+                <span class="chevron" aria-hidden="true"></span>
+            </summary>
+            <div class="acc-body">
+                <p class="acc-placeholder">활동 히스토리를 여기에 추가하세요.</p>
+            </div>
+        </details>
+
+    </div><!-- /.accordion -->
+
+    <footer id="contact" class="contact">
         <p class="contact-line">Get in touch</p>
         <a class="email-link" href="mailto:1ckdgns24@gmail.com">1ckdgns24@gmail.com</a>
 
@@ -992,14 +1178,27 @@
 
     <div class="page-footer">
         <span class="left">© 2026 · Changhun Lee</span>
-        <span class="right">Seoul, KR <span class="dot">●</span> Index / 03</span>
+        <span class="right">Seoul, KR <span class="dot">●</span> Portfolio</span>
     </div>
 
     <script>
+        // Clicking a nav / index link opens the matching collapsible section, then scrolls to it.
+        document.querySelectorAll('a[href^="#"]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                const id = link.getAttribute('href').slice(1);
+                const target = document.getElementById(id);
+                if (!target) return;
+                if (target.tagName.toLowerCase() === 'details') {
+                    e.preventDefault();
+                    target.open = true;
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
         // Active nav highlight based on the section currently in view
         const links = document.querySelectorAll('.nav a');
-        const ids = ['home', 'about', 'project', 'contact'];
-        const sections = ids.map(id => document.getElementById(id)).filter(Boolean);
+        const sections = document.querySelectorAll('.accordion .acc');
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -1014,7 +1213,6 @@
         }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
 
         sections.forEach(s => observer.observe(s));
-
     </script>
 </body>
 </html>
