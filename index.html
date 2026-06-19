@@ -881,6 +881,90 @@
                     </div>
                 </div>
             </a>
+
+            <!-- Daily Script: an installable LLM-powered daily writing PWA -->
+            <a class="card card--daily" id="card-dailyscript"
+               href="https://ai-camp-6nd-llm-service-project-6th-psi.vercel.app/"
+               target="_blank" rel="noopener noreferrer">
+                <div class="card-media">
+                    <div class="card-bg" aria-hidden="true">
+                    <svg viewBox="0 0 400 320" preserveAspectRatio="xMidYMid slice"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <radialGradient id="dsGlow" cx="50%" cy="34%" r="72%">
+                                <stop offset="0%"  stop-color="#23315c" stop-opacity="0.95"/>
+                                <stop offset="100%" stop-color="#070a12" stop-opacity="1"/>
+                            </radialGradient>
+                            <linearGradient id="dsPaper" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0%"   stop-color="#f6f4ed"/>
+                                <stop offset="100%" stop-color="#dcd8c8"/>
+                            </linearGradient>
+                            <linearGradient id="dsSun" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0%"   stop-color="#ffd27a" stop-opacity="0.9"/>
+                                <stop offset="100%" stop-color="#ffd27a" stop-opacity="0"/>
+                            </linearGradient>
+                        </defs>
+                        <!-- Night-to-dawn ambience -->
+                        <rect width="400" height="320" fill="url(#dsGlow)"/>
+                        <!-- Sunrise glow rising from the base (the "daily" rhythm) -->
+                        <ellipse cx="200" cy="332" rx="260" ry="120" fill="url(#dsSun)" opacity="0.5"/>
+                        <!-- Faint stars -->
+                        <g fill="#cfe0ff">
+                            <circle cx="60"  cy="50"  r="1.1" opacity="0.7"/>
+                            <circle cx="322" cy="40"  r="1.3" opacity="0.6"/>
+                            <circle cx="352" cy="92"  r="1"   opacity="0.5"/>
+                            <circle cx="40"  cy="112" r="0.9" opacity="0.45"/>
+                            <circle cx="120" cy="34"  r="0.8" opacity="0.4"/>
+                        </g>
+                        <!-- The script: a tilted note page being written -->
+                        <g transform="rotate(-5 200 165)">
+                            <rect x="120" y="70" width="160" height="192" rx="11" fill="url(#dsPaper)"/>
+                            <!-- App chrome / window bar -->
+                            <path d="M 120 81 Q 120 70 131 70 L 269 70 Q 280 70 280 81 L 280 100 L 120 100 Z"
+                                  fill="#2f3a5e"/>
+                            <circle cx="137" cy="85" r="3.4" fill="#ff6b6b"/>
+                            <circle cx="149" cy="85" r="3.4" fill="#ffd27a"/>
+                            <circle cx="161" cy="85" r="3.4" fill="#4ade80"/>
+                            <!-- Lines of generated script -->
+                            <g fill="#2f3a5e" opacity="0.78">
+                                <rect x="135" y="118" width="122" height="7" rx="3.5"/>
+                                <rect x="135" y="135" width="96"  height="7" rx="3.5"/>
+                                <rect x="135" y="152" width="130" height="7" rx="3.5"/>
+                                <rect x="135" y="169" width="82"  height="7" rx="3.5"/>
+                                <rect x="135" y="186" width="116" height="7" rx="3.5"/>
+                                <rect x="135" y="203" width="70"  height="7" rx="3.5"/>
+                            </g>
+                            <!-- Live typing cursor -->
+                            <rect x="209" y="201" width="3" height="11" fill="#2f3a5e"/>
+                        </g>
+                        <!-- AI spark composing the day -->
+                        <circle cx="284" cy="92" r="23" fill="#ffe9a8" opacity="0.12"/>
+                        <path d="M 284 76 C 286 87 289 90 300 92 C 289 94 286 97 284 108
+                                 C 282 97 279 94 268 92 C 279 90 282 87 284 76 Z"
+                              fill="#ffe9a8"/>
+                    </svg>
+                    </div>
+                    <div class="card-overlay"></div>
+                    <span class="card-tag"><span class="dot"></span>Live</span>
+                    <span class="card-year">2026</span>
+                </div>
+                <div class="card-info">
+                    <div class="card-info-top">
+                        <span class="card-num">Project 03</span>
+                        <h3>Daily Script</h3>
+                        <p class="card-desc">
+                            An installable LLM companion that turns each day into a script — write, reflect, repeat.
+                        </p>
+                    </div>
+                    <div class="card-foot">
+                        <div class="card-meta">
+                            <span class="chip">PWA</span>
+                            <span class="chip">LLM</span>
+                        </div>
+                        <span class="card-cta">Open <span class="cta-arrow">→</span></span>
+                    </div>
+                </div>
+            </a>
         </div>
     </section>
 
