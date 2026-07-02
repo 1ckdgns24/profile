@@ -20,9 +20,9 @@
             --ink-3:      #918f86;
             --line:       #e7e5dd;
             --line-2:     #f0efe9;
-            --accent:     #9c7a2c;
-            --accent-2:   #b9932f;
-            --accent-soft:#f1ead8;
+            --accent:     #7a5d17;
+            --accent-2:   #8a6a1e;
+            --accent-soft:#efe7d2;
             --mono: "JetBrains Mono", ui-monospace, "SF Mono", "Cascadia Code", "Roboto Mono", Menlo, Consolas, monospace;
             --sans: "Pretendard Variable", Pretendard, system-ui, -apple-system, sans-serif;
             --wrap: 900px;
@@ -67,7 +67,7 @@
         }
         .greeting {
             font-family: var(--mono); font-size: 0.74rem; letter-spacing: 0.24em; text-transform: uppercase;
-            color: var(--accent); margin-bottom: 1rem;
+            color: var(--ink-2); font-weight: 600; margin-bottom: 1rem;
         }
         .intro-name { font-size: clamp(2.4rem, 7vw, 4rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.02; color: var(--ink); }
         .intro-text { margin-top: 1.05rem; font-size: clamp(1.05rem, 2.2vw, 1.4rem); color: var(--ink-2); font-weight: 500; letter-spacing: -0.01em; }
@@ -84,7 +84,7 @@
         .accordion { max-width: var(--wrap); margin: 0 auto; padding: 0 clamp(1.25rem, 5vw, 2rem) 3rem; display: flex; flex-direction: column; gap: 0.9rem; }
         .acc { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
         .acc-head { display: flex; align-items: baseline; gap: 1rem; padding: 1.25rem clamp(1.1rem, 3vw, 1.6rem); border-bottom: 1px solid var(--line); }
-        .acc-num { font-family: var(--mono); font-size: 0.72rem; color: var(--accent); letter-spacing: 0.14em; }
+        .acc-num { font-family: var(--mono); font-size: 0.72rem; color: var(--ink-2); font-weight: 600; letter-spacing: 0.14em; }
         .acc-title { flex: 1; font-size: 1.1rem; font-weight: 700; letter-spacing: 0.01em; text-transform: uppercase; color: var(--ink); }
         .acc-body { padding: clamp(1.3rem, 3vw, 1.9rem); }
         .acc-placeholder { color: var(--ink-3); font-size: 0.95rem; }
@@ -108,7 +108,7 @@
 
         /* ── CV: career / experience / education ── */
         .cv { display: flex; flex-direction: column; gap: 2.2rem; }
-        .cv-group-label { display: block; font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--line); }
+        .cv-group-label { display: block; font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink); font-weight: 700; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--line); }
         .cv-item { padding: 0.15rem 0 1.05rem; border-bottom: 1px solid var(--line-2); }
         .cv-item + .cv-item { margin-top: 1.05rem; }
         .cv-group > .cv-item:last-child { border-bottom: none; padding-bottom: 0; }
@@ -150,7 +150,7 @@
         .card--logo-light .card-year, .card--score .card-year { color: #5a5040; background: rgba(255,255,255,0.62); }
         .card-info { padding: 1.25rem 1.35rem 1.35rem; display: flex; flex-direction: column; gap: 1.1rem; flex: 1; }
         .card-info-top { display: flex; flex-direction: column; }
-        .card-num { font-family: var(--mono); font-size: 0.66rem; color: var(--accent); letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 0.5rem; }
+        .card-num { font-family: var(--mono); font-size: 0.66rem; color: var(--ink-2); font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 0.5rem; }
         .card h3 { font-size: 1.3rem; font-weight: 700; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 0.5rem; }
         .card-desc { font-size: 0.9rem; color: var(--ink-2); line-height: 1.55; }
         .card-foot { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-top: 1rem; border-top: 1px solid var(--line-2); margin-top: auto; }
@@ -160,6 +160,10 @@
         .cta-arrow { transition: transform 0.2s ease; }
         .card:hover .card-cta { color: var(--accent); }
         .card:hover .cta-arrow { transform: translateX(4px); }
+        .card.is-wip { cursor: default; }
+        .card.is-wip:hover { transform: none; border-color: var(--line); }
+        .card-cta--wip { color: var(--ink-3); }
+        .card.is-wip:hover .card-cta--wip { color: var(--ink-3); }
 
         /* ── QR modal ── */
         .qr-modal { position: fixed; inset: 0; z-index: 100; display: none; place-items: center; background: rgba(20,18,14,0.55); backdrop-filter: blur(3px); padding: 1.5rem; }
@@ -174,7 +178,7 @@
 
         /* ── Contact ── */
         #contact { max-width: var(--wrap); margin: 0 auto; padding: 2rem clamp(1.25rem, 5vw, 2rem) 3rem; }
-        .contact-line { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.9rem; }
+        .contact-line { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-2); font-weight: 600; margin-bottom: 0.9rem; }
         .email-link { display: inline-block; font-size: clamp(1.4rem, 3.5vw, 2.1rem); font-weight: 700; letter-spacing: -0.02em; color: var(--ink); text-decoration: none; border-bottom: 2px solid var(--line); padding-bottom: 2px; transition: color 0.2s, border-color 0.2s; }
         .email-link:hover { color: var(--accent); border-color: var(--accent); }
         .socials { display: flex; gap: 0.75rem; margin-top: 1.5rem; }
@@ -385,9 +389,7 @@
             </a>
 
             <!-- Score Flow: vintage sheet music page -->
-            <a class="card card--score" id="card-scoreflow"
-               href="file:///C:/Users/Lee/Desktop/Score%20Flow/presentation.html"
-               target="_blank" rel="noopener noreferrer">
+            <div class="card card--score is-wip" id="card-scoreflow">
                 <div class="card-media">
                     <div class="card-bg" aria-hidden="true">
                     <svg viewBox="0 0 400 320" preserveAspectRatio="xMidYMid slice"
@@ -509,10 +511,10 @@
                             <span class="chip">Music</span>
                             <span class="chip">Tool</span>
                         </div>
-                        <span class="card-cta">View <span class="cta-arrow">→</span></span>
+                        <span class="card-cta card-cta--wip">준비 중</span>
                     </div>
                 </div>
-            </a>
+            </div>
 
             <!-- Daily Script: an installable LLM-powered daily writing PWA -->
             <a class="card card--daily card--logo-dark" id="card-dailyscript"
@@ -593,7 +595,7 @@
         <a class="email-link" href="mailto:1ckdgns24@gmail.com">1ckdgns24@gmail.com</a>
 
         <div class="socials">
-            <a href="https://instagram.com/Changhun_2" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <a href="https://instagram.com/changhun__2" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                 <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
                 </svg>
