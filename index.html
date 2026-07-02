@@ -727,6 +727,103 @@
         }
         .index-list a:hover { color: var(--gold); padding-left: 0.4rem; }
 
+        /* ───── Logo card media (project cards showing a brand logo) ───── */
+        .card-logo {
+            position: absolute; inset: 0; z-index: 0;
+            display: grid; place-items: center;
+        }
+        .card-logo img {
+            width: 56%; height: 56%; object-fit: contain;
+            transition: transform 1.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .card:hover .card-logo img { transform: scale(1.06); }
+        .card--logo-dark  .card-media {
+            background: radial-gradient(circle at 50% 42%, #1d1712 0%, #0a0806 100%);
+        }
+        .card--logo-light .card-media {
+            background: radial-gradient(circle at 50% 42%, #f4efe5 0%, #e6ded0 100%);
+        }
+
+        /* ───── CV list: career / experience / education ───── */
+        .cv { display: flex; flex-direction: column; gap: 2.4rem; }
+        .cv-group-label {
+            display: block;
+            font-family: var(--mono);
+            font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
+            color: var(--gold); text-shadow: var(--gold-glow);
+            margin-bottom: 1.15rem;
+        }
+        .cv-item { padding-bottom: 1.35rem; border-bottom: 1px solid var(--ink-faint); }
+        .cv-item + .cv-item { margin-top: 1.35rem; }
+        .cv-item:last-child { border-bottom: none; padding-bottom: 0; }
+        .cv-head {
+            display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.4rem 0.9rem;
+        }
+        .cv-title { font-size: 1.1rem; font-weight: 700; letter-spacing: -0.01em; }
+        .cv-date {
+            font-family: var(--mono); font-size: 0.73rem;
+            color: var(--ink-mute); letter-spacing: 0.04em;
+        }
+        .cv-org  { font-size: 0.9rem;  color: var(--ink-mute); margin-top: 0.35rem; }
+        .cv-role { font-size: 0.92rem; color: var(--ink);       margin-top: 0.55rem; line-height: 1.6; }
+        .cv-desc { font-size: 0.9rem;  color: var(--ink-mute); margin-top: 0.35rem; line-height: 1.6; }
+
+        /* ───── Certifications ───── */
+        .certs {
+            display: grid; grid-template-columns: repeat(2, 1fr);
+            gap: 0 1.6rem;
+        }
+        @media (max-width: 640px) { .certs { grid-template-columns: 1fr; } }
+        .cert { padding: 1.05rem 0; border-bottom: 1px solid var(--ink-faint); }
+        .cert-name { font-size: 1.02rem; font-weight: 700; letter-spacing: -0.01em; }
+        .cert-badge {
+            font-family: var(--mono); font-size: 0.58rem;
+            letter-spacing: 0.14em; text-transform: uppercase;
+            color: var(--gold); border: 1px solid var(--gold-faint);
+            border-radius: 100px; padding: 0.15rem 0.5rem;
+            margin-left: 0.5rem; vertical-align: middle; white-space: nowrap;
+        }
+        .cert-meta {
+            display: flex; justify-content: space-between; gap: 0.75rem;
+            margin-top: 0.45rem; font-size: 0.82rem; color: var(--ink-mute);
+        }
+        .cert-date { font-family: var(--mono); letter-spacing: 0.03em; }
+
+        /* ───── About narrative ───── */
+        .about { max-width: 760px; }
+        .about p { font-size: 1rem; line-height: 1.95; color: var(--ink); margin-bottom: 1.45rem; }
+        .about p:last-child { margin-bottom: 0; }
+        .about .lead { font-size: 1.14rem; font-weight: 600; letter-spacing: -0.01em; }
+        .about .accent-gold { color: var(--gold); font-weight: 600; }
+
+        /* ───── QR modal (Daily Script "Open") ───── */
+        .qr-modal {
+            position: fixed; inset: 0; z-index: 100;
+            display: none; place-items: center;
+            background: rgba(8, 6, 4, 0.72); backdrop-filter: blur(4px);
+            padding: 1.5rem;
+        }
+        .qr-modal.open { display: grid; animation: qrIn 0.25s ease; }
+        @keyframes qrIn { from { opacity: 0; } to { opacity: 1; } }
+        .qr-box {
+            position: relative; background: #fff; border-radius: 18px;
+            padding: 2.2rem 2rem 1.6rem; max-width: 340px; width: 100%;
+            text-align: center; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+        }
+        .qr-box h4 { font-size: 1.2rem; margin-bottom: 0.35rem; }
+        .qr-box .qr-sub { font-size: 0.82rem; color: var(--ink-mute); margin-bottom: 1.2rem; }
+        .qr-box img { width: 224px; height: 224px; display: block; margin: 0 auto 1rem; }
+        .qr-box a {
+            font-family: var(--mono); font-size: 0.72rem; color: var(--gold);
+            word-break: break-all; text-decoration: none;
+        }
+        .qr-close {
+            position: absolute; top: 0.6rem; right: 0.9rem;
+            background: none; border: none; font-size: 1.6rem; line-height: 1;
+            cursor: pointer; color: var(--ink-mute);
+        }
+        .qr-close:hover { color: var(--ink); }
+
     </style>
 </head>
 <body>
@@ -755,8 +852,8 @@
         <span class="name">Changhun Lee</span>
         <nav class="nav">
             <a href="#index">Index</a>
+            <a href="#about">About</a>
             <a href="#career">Career</a>
-            <a href="#portfolio">Portfolio</a>
             <a href="#certification">Cert</a>
             <a href="#project">Project</a>
             <a href="#history">History</a>
@@ -770,7 +867,6 @@
             예술적 창의성과 <span class="accent">AI</span>의 만남
         </p>
         <h1 class="intro-name">Changhun Lee</h1>
-        <p class="intro-sub">AI Camp · 6th Cohort</p>
     </main>
 
     <!-- Collapsible sections -->
@@ -784,8 +880,8 @@
             </summary>
             <div class="acc-body">
                 <ul class="index-list">
+                    <li><a href="#about">About</a></li>
                     <li><a href="#career">Career</a></li>
-                    <li><a href="#portfolio">Portfolio</a></li>
                     <li><a href="#certification">Certification</a></li>
                     <li><a href="#project">My Project</a></li>
                     <li><a href="#history">My History</a></li>
@@ -793,25 +889,98 @@
             </div>
         </details>
 
-        <details class="acc" id="career">
+        <details class="acc" id="about">
             <summary class="acc-head">
                 <span class="acc-num">02</span>
+                <span class="acc-title">About</span>
+                <span class="chevron" aria-hidden="true"></span>
+            </summary>
+            <div class="acc-body">
+                <div class="about">
+                    <p class="lead">지금 이 순간에도 <span class="accent-gold">artistr.co.kr</span>에서는 AI가 매일 음악계 공연 소식을 모으고 있습니다.</p>
+                    <p>시작은 제 불편이었습니다. 오케스트라 공연지원팀에서 1년 8개월간 일하며 같은 문제를 반복해서 마주했습니다. 오디션 공고는 출처마다 흩어져 있어 연주자가 기회를 놓쳤고, 섭외할 때마다 연주자를 일일이 개별 연락해야 했으며, 연주자들이 정보를 나눌 커뮤니티도 없었습니다. 연주자와 회사의 입장을 동시에 겪으며, 이 불편은 누군가 풀어야 한다고 생각했습니다.</p>
+                    <p>그래서 직접 만들었습니다. artistr는 구글 뉴스 등 약 15개 소스에서 음악계 공연 소식을 AI가 매일 자동으로 찾아 모아 게시하고, 섭외·레슨·커뮤니티를 한곳에 담은 서비스입니다. 새 소식이 있으면 사람이 손대지 않아도 매일 쌓여, 지금까지 50건이 넘는 정보가 모였고 그 수는 계속 늘고 있습니다. 저는 이 서비스의 첫 사용자이기도 합니다.</p>
+
+                    <p class="lead">저는 ‘AI를 넣는 것’이 아니라 ‘문제를 푸는 것’을 먼저 봅니다.</p>
+                    <p>이 기준은 자동매매 프로젝트 trade에서 얻었습니다. 처음에는 더 복잡하고 똑똑한 모델이 더 나은 결과를 낼 것이라 가정했지만, 7년치 일봉 데이터로 여러 전략을 백테스팅한 결과는 정반대였습니다. 화려한 고배율 전략은 모두 실패했고, AI 호출이 전혀 없는 단순 추세추종 규칙만 장기적으로 우위를 보였습니다. 트레이딩뷰 독립 검증도 통과했습니다. 저는 이 결과를 받아들여 AI를 쓰지 않는 쪽을 택했습니다.</p>
+                    <p>반대로 AI가 진짜 필요한 곳도 구분합니다. 4인 팀 프로젝트 Daily Script에서는 방대한 대본과 도서에서 명대사를 사람이 일일이 골라내는 일이 비효율적이었습니다. 그래서 Claude로 텍스트에서 명대사를 추출하고, 사람이 검수·번역하는 흐름을 설계했습니다. AI가 할 일과 사람이 할 일을 나눈 것입니다.</p>
+                    <p>이런 판단은 한 번으로 끝나지 않았습니다. 연주 중 악보를 넘길 손이 없다는 불편에서 출발한 Score Flow Lite, 팬과 크리에이터를 잇는 Giftshorts까지 여러 제품을 출시 단계까지 끌고 갔습니다. 특히 Giftshorts에서는 돈을 낸 팬이 영상을 못 받는 상황을 시스템이 자동으로 되돌리도록, 기한 내 미이행 시 자동 환불을 설계했습니다.</p>
+
+                    <p class="lead">가장 도전적이었던 일은, 아무런 인프라도 없는 곳에서 교육 제품 하나를 처음부터 끝까지 책임진 경험입니다.</p>
+                    <p>대학 졸업 후 KOICA 음악 프로젝트로 르완다에 파견되었을 때, 현지에는 체계적인 음악 교육 자료가 전무했습니다. 음악 전문가로서 막연히 가르치는 대신 문제부터 정의하기로 했습니다. 3개 학교를 돌며 학생 100여 명과 교사 30여 명의 학습 실태를 조사했고, 서구식 이론을 그대로 전달해서는 지속될 수 없다는 점을 확인했습니다. 이를 바탕으로 현지 언어와 문화에 맞춘 12단원 250쪽 교재를 제작했고, 르완다 교육청과 협의한 뒤 직접 프레젠테이션해 공식 인증까지 받았습니다.</p>
+                    <p>사용자 조사부터 문제 정의, 제작, 의사결정자 설득과 승인까지 한 사이클을 혼자 끝까지 돌렸습니다. 인프라가 없는 환경에서도 끝까지 결과를 냈고, 이 경험이 지금 여러 제품을 기획부터 출시까지 끌고 가는 바탕이 되었습니다.</p>
+
+                    <p class="lead">제품을 만드는 일은 결국 사람을 모으고 맞춰가는 일입니다.</p>
+                    <p>중·고등학교 학생회장과 음악대학 학회장을 맡으며 여러 구성원의 목소리를 하나의 방향으로 모으는 자리에 있었습니다. 학회장 시절 정기공연을 기획할 때는 예기치 못한 행정 오류와 인력난이 겹쳤지만, 흩어진 변수를 하나씩 조율해 300명이 넘는 관객 앞에서 공연을 끝까지 완성했습니다. 여러 사람과 일정을 데드라인 안에 정렬해 결과물을 내는 일은, 지금 제가 제품을 만드는 방식과 다르지 않습니다.</p>
+                    <p>오케스트라에서도 마찬가지였습니다. 연주자들의 의견이 충돌해 리허설이 어려워졌을 때, 연주자를 개별적으로 만나 설득하고 그 요청을 회사 운영에 반영해 이후 공연에 차질이 없도록 정리했습니다. 사용자의 요구와 조직의 제약 사이에서 균형점을 찾는 이 일은, 기획자가 매일 하는 일과 같습니다. 저는 그 일을 무대 위가 아니라 무대 뒤에서 이미 오래 해왔습니다.</p>
+                </div>
+            </div>
+        </details>
+
+        <details class="acc" id="career">
+            <summary class="acc-head">
+                <span class="acc-num">03</span>
                 <span class="acc-title">Career</span>
                 <span class="chevron" aria-hidden="true"></span>
             </summary>
             <div class="acc-body">
-                <p class="acc-placeholder">경력 내용을 여기에 추가하세요.</p>
-            </div>
-        </details>
+                <div class="cv">
+                    <div class="cv-group">
+                        <span class="cv-group-label">경력</span>
+                        <div class="cv-item">
+                            <div class="cv-head">
+                                <span class="cv-title">심포니송</span>
+                                <span class="cv-date">2024.03 – 2025.11 · 1년 9개월</span>
+                            </div>
+                            <p class="cv-role">PM(프로젝트매니저) · 공연지원팀 콘서트매니저 1년차</p>
+                        </div>
+                    </div>
 
-        <details class="acc" id="portfolio">
-            <summary class="acc-head">
-                <span class="acc-num">03</span>
-                <span class="acc-title">Portfolio</span>
-                <span class="chevron" aria-hidden="true"></span>
-            </summary>
-            <div class="acc-body">
-                <p class="acc-placeholder">포트폴리오 내용을 여기에 추가하세요.</p>
+                    <div class="cv-group">
+                        <span class="cv-group-label">경험</span>
+                        <div class="cv-item">
+                            <div class="cv-head">
+                                <span class="cv-title">전농중학교 드론 교육 강사</span>
+                                <span class="cv-date">2023.08.14 – 2024.01.02</span>
+                            </div>
+                            <p class="cv-desc">중학생 대상 드론 교육 진행</p>
+                        </div>
+                        <div class="cv-item">
+                            <div class="cv-head">
+                                <span class="cv-title">에그엔터 영상편집 프리랜서</span>
+                                <span class="cv-date">2023.06.12 – 2023.07.12</span>
+                            </div>
+                            <p class="cv-org">에그엔터</p>
+                            <p class="cv-desc">유튜브 쇼츠 제작</p>
+                        </div>
+                        <div class="cv-item">
+                            <div class="cv-head">
+                                <span class="cv-title">KOICA 해외봉사단 음악프로젝트봉사단</span>
+                                <span class="cv-date">2019.03 – 2020.04 · 약 12개월</span>
+                            </div>
+                            <p class="cv-org">코이카(KOICA)</p>
+                            <p class="cv-desc">르완다 현지 음악 이론 교재 제작</p>
+                        </div>
+                    </div>
+
+                    <div class="cv-group">
+                        <span class="cv-group-label">교육 · 수료</span>
+                        <div class="cv-item">
+                            <div class="cv-head">
+                                <span class="cv-title">패스트캠퍼스 10주 AI 서비스 PM 과정 수료</span>
+                            </div>
+                            <p class="cv-desc">AI 서비스 기획 · 프로덕트 매니지먼트 10주 과정</p>
+                        </div>
+                        <div class="cv-item">
+                            <div class="cv-head">
+                                <span class="cv-title">드론항공 영상촬영전문가 교육이수</span>
+                                <span class="cv-date">2023.04 – 2023.06</span>
+                            </div>
+                            <p class="cv-org">동대문여성인력개발센터</p>
+                            <p class="cv-desc">드론 영상 촬영 및 프리미어 프로를 이용한 영상 편집</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </details>
 
@@ -822,7 +991,32 @@
                 <span class="chevron" aria-hidden="true"></span>
             </summary>
             <div class="acc-body">
-                <p class="acc-placeholder">자격증 내용을 여기에 추가하세요.</p>
+                <div class="certs">
+                    <div class="cert">
+                        <div class="cert-name">G-TELP <span class="cert-badge">2급</span></div>
+                        <div class="cert-meta"><span class="cert-org">영어 · 64점 취득</span><span class="cert-date">2022.05</span></div>
+                    </div>
+                    <div class="cert">
+                        <div class="cert-name">1종 대형운전면허 <span class="cert-badge">최종합격</span></div>
+                        <div class="cert-meta"><span class="cert-org">경찰청 (운전면허시험관리단)</span><span class="cert-date">2020.06</span></div>
+                    </div>
+                    <div class="cert">
+                        <div class="cert-name">한국사능력검정시험 3급 <span class="cert-badge">최종합격</span></div>
+                        <div class="cert-meta"><span class="cert-org">국사편찬위원회</span><span class="cert-date">2022.04</span></div>
+                    </div>
+                    <div class="cert">
+                        <div class="cert-name">컴퓨터활용능력 2급 <span class="cert-badge">최종합격</span></div>
+                        <div class="cert-meta"><span class="cert-org">대한상공회의소</span><span class="cert-date">2021.02</span></div>
+                    </div>
+                    <div class="cert">
+                        <div class="cert-name">초경량비행장치 1종 조종자 <span class="cert-badge">최종합격</span></div>
+                        <div class="cert-meta"><span class="cert-org">한국교통안전공단</span><span class="cert-date">2022.12</span></div>
+                    </div>
+                    <div class="cert">
+                        <div class="cert-name">드론지도사 2급 <span class="cert-badge">최종합격</span></div>
+                        <div class="cert-meta"><span class="cert-org">국제능력교육원</span><span class="cert-date">2023.04</span></div>
+                    </div>
+                </div>
             </div>
         </details>
 
@@ -836,74 +1030,12 @@
                 <section class="portfolio">
                     <div class="cards">
             <!-- Artistr: concert hall stage with curtains, spotlights, audience -->
-            <a class="card card--hall" href="https://www.artistr.co.kr"
+            <a class="card card--hall card--logo-dark" href="https://www.artistr.co.kr"
                target="_blank" rel="noopener noreferrer">
                 <div class="card-media">
-                    <div class="card-bg" aria-hidden="true">
-                    <svg viewBox="0 0 400 320" preserveAspectRatio="xMidYMid slice"
-                         xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <radialGradient id="hallGlow" cx="50%" cy="38%" r="60%">
-                                <stop offset="0%"  stop-color="#3a2a1a" stop-opacity="0.85"/>
-                                <stop offset="100%" stop-color="#080604" stop-opacity="1"/>
-                            </radialGradient>
-                            <linearGradient id="curtainL" x1="0" y1="0" x2="1" y2="0">
-                                <stop offset="0%"   stop-color="#5a1a18"/>
-                                <stop offset="60%"  stop-color="#3a0e0c"/>
-                                <stop offset="100%" stop-color="#240605"/>
-                            </linearGradient>
-                            <linearGradient id="curtainR" x1="0" y1="0" x2="1" y2="0">
-                                <stop offset="0%"   stop-color="#240605"/>
-                                <stop offset="40%"  stop-color="#3a0e0c"/>
-                                <stop offset="100%" stop-color="#5a1a18"/>
-                            </linearGradient>
-                            <linearGradient id="beam" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="0%"  stop-color="#fff5cc" stop-opacity="0.28"/>
-                                <stop offset="100%" stop-color="#fff5cc" stop-opacity="0"/>
-                            </linearGradient>
-                        </defs>
-                        <!-- Hall ambience -->
-                        <rect width="400" height="320" fill="url(#hallGlow)"/>
-                        <!-- Spotlight beams from above -->
-                        <polygon points="110,0 80,200 145,200" fill="url(#beam)"/>
-                        <polygon points="290,0 255,200 320,200" fill="url(#beam)"/>
-                        <polygon points="200,0 178,210 222,210" fill="url(#beam)" opacity="0.55"/>
-                        <!-- Side curtains with fabric folds -->
-                        <path d="M 0,0 L 80,0
-                                 Q 75,40 80,80 Q 85,120 78,160
-                                 Q 72,210 80,260 L 76,320 L 0,320 Z"
-                              fill="url(#curtainL)"/>
-                        <path d="M 400,0 L 320,0
-                                 Q 325,40 320,80 Q 315,120 322,160
-                                 Q 328,210 320,260 L 324,320 L 400,320 Z"
-                              fill="url(#curtainR)"/>
-                        <!-- Curtain folds (subtle highlights) -->
-                        <g stroke="rgba(255,200,170,0.08)" stroke-width="1" fill="none">
-                            <path d="M 20,0 Q 22,80 18,160 Q 16,240 22,320"/>
-                            <path d="M 45,0 Q 48,80 42,160 Q 40,240 46,320"/>
-                            <path d="M 380,0 Q 378,80 382,160 Q 384,240 378,320"/>
-                            <path d="M 355,0 Q 352,80 358,160 Q 360,240 354,320"/>
-                        </g>
-                        <!-- Stage edge -->
-                        <rect x="80" y="240" width="240" height="80" fill="#1a0e08"/>
-                        <line x1="80" y1="240" x2="320" y2="240"
-                              stroke="#7a5530" stroke-width="1.4" opacity="0.7"/>
-                        <!-- Audience silhouette -->
-                        <ellipse cx="200" cy="335" rx="220" ry="35" fill="#000" opacity="0.85"/>
-                        <ellipse cx="160" cy="320" rx="14" ry="6" fill="#000"/>
-                        <ellipse cx="200" cy="318" rx="14" ry="6" fill="#000"/>
-                        <ellipse cx="240" cy="320" rx="14" ry="6" fill="#000"/>
-                        <!-- Ambient stars / chandelier sparkle -->
-                        <g fill="#ffe4a3">
-                            <circle cx="100"  cy="40"  r="1.2" opacity="0.8"/>
-                            <circle cx="180"  cy="22"  r="1"   opacity="0.6"/>
-                            <circle cx="240"  cy="40"  r="1.2" opacity="0.7"/>
-                            <circle cx="320"  cy="28"  r="1"   opacity="0.5"/>
-                            <circle cx="150"  cy="52"  r="0.9" opacity="0.45"/>
-                            <circle cx="280"  cy="52"  r="0.9" opacity="0.45"/>
-                        </g>
-                    </svg>
-                </div>
+                    <div class="card-logo">
+                        <img src="assets/artistr-logo.svg" alt="Artistr 로고" loading="lazy">
+                    </div>
                     <div class="card-overlay"></div>
                     <span class="card-tag"><span class="dot"></span>Live</span>
                     <span class="card-year">2026</span>
@@ -1057,66 +1189,12 @@
             </a>
 
             <!-- Daily Script: an installable LLM-powered daily writing PWA -->
-            <a class="card card--daily" id="card-dailyscript"
-               href="https://ai-camp-6nd-llm-service-project-6th-psi.vercel.app/"
-               target="_blank" rel="noopener noreferrer">
+            <a class="card card--daily card--logo-dark" id="card-dailyscript"
+               href="#" role="button"
+               data-qr="https://ai-camp-6nd-llm-service-project-6th-psi.vercel.app/">
                 <div class="card-media">
-                    <div class="card-bg" aria-hidden="true">
-                    <svg viewBox="0 0 400 320" preserveAspectRatio="xMidYMid slice"
-                         xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <radialGradient id="dsGlow" cx="50%" cy="34%" r="72%">
-                                <stop offset="0%"  stop-color="#23315c" stop-opacity="0.95"/>
-                                <stop offset="100%" stop-color="#070a12" stop-opacity="1"/>
-                            </radialGradient>
-                            <linearGradient id="dsPaper" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="0%"   stop-color="#f6f4ed"/>
-                                <stop offset="100%" stop-color="#dcd8c8"/>
-                            </linearGradient>
-                            <linearGradient id="dsSun" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="0%"   stop-color="#ffd27a" stop-opacity="0.9"/>
-                                <stop offset="100%" stop-color="#ffd27a" stop-opacity="0"/>
-                            </linearGradient>
-                        </defs>
-                        <!-- Night-to-dawn ambience -->
-                        <rect width="400" height="320" fill="url(#dsGlow)"/>
-                        <!-- Sunrise glow rising from the base (the "daily" rhythm) -->
-                        <ellipse cx="200" cy="332" rx="260" ry="120" fill="url(#dsSun)" opacity="0.5"/>
-                        <!-- Faint stars -->
-                        <g fill="#cfe0ff">
-                            <circle cx="60"  cy="50"  r="1.1" opacity="0.7"/>
-                            <circle cx="322" cy="40"  r="1.3" opacity="0.6"/>
-                            <circle cx="352" cy="92"  r="1"   opacity="0.5"/>
-                            <circle cx="40"  cy="112" r="0.9" opacity="0.45"/>
-                            <circle cx="120" cy="34"  r="0.8" opacity="0.4"/>
-                        </g>
-                        <!-- The script: a tilted note page being written -->
-                        <g transform="rotate(-5 200 165)">
-                            <rect x="120" y="70" width="160" height="192" rx="11" fill="url(#dsPaper)"/>
-                            <!-- App chrome / window bar -->
-                            <path d="M 120 81 Q 120 70 131 70 L 269 70 Q 280 70 280 81 L 280 100 L 120 100 Z"
-                                  fill="#2f3a5e"/>
-                            <circle cx="137" cy="85" r="3.4" fill="#ff6b6b"/>
-                            <circle cx="149" cy="85" r="3.4" fill="#ffd27a"/>
-                            <circle cx="161" cy="85" r="3.4" fill="#4ade80"/>
-                            <!-- Lines of generated script -->
-                            <g fill="#2f3a5e" opacity="0.78">
-                                <rect x="135" y="118" width="122" height="7" rx="3.5"/>
-                                <rect x="135" y="135" width="96"  height="7" rx="3.5"/>
-                                <rect x="135" y="152" width="130" height="7" rx="3.5"/>
-                                <rect x="135" y="169" width="82"  height="7" rx="3.5"/>
-                                <rect x="135" y="186" width="116" height="7" rx="3.5"/>
-                                <rect x="135" y="203" width="70"  height="7" rx="3.5"/>
-                            </g>
-                            <!-- Live typing cursor -->
-                            <rect x="209" y="201" width="3" height="11" fill="#2f3a5e"/>
-                        </g>
-                        <!-- AI spark composing the day -->
-                        <circle cx="284" cy="92" r="23" fill="#ffe9a8" opacity="0.12"/>
-                        <path d="M 284 76 C 286 87 289 90 300 92 C 289 94 286 97 284 108
-                                 C 282 97 279 94 268 92 C 279 90 282 87 284 76 Z"
-                              fill="#ffe9a8"/>
-                    </svg>
+                    <div class="card-logo">
+                        <img src="assets/dailyscript-logo.svg" alt="Daily Script 로고" loading="lazy">
                     </div>
                     <div class="card-overlay"></div>
                     <span class="card-tag"><span class="dot"></span>Live</span>
@@ -1136,6 +1214,34 @@
                             <span class="chip">LLM</span>
                         </div>
                         <span class="card-cta">Open <span class="cta-arrow">→</span></span>
+                    </div>
+                </div>
+            </a>
+            <!-- Giftshorts: fan x creator video-gift platform with auto-refund -->
+            <a class="card card--logo-light" href="https://giftshots.vercel.app"
+               target="_blank" rel="noopener noreferrer">
+                <div class="card-media">
+                    <div class="card-logo">
+                        <img src="assets/giftshorts-logo.png" alt="Giftshorts 로고" loading="lazy">
+                    </div>
+                    <div class="card-overlay"></div>
+                    <span class="card-tag"><span class="dot"></span>Live</span>
+                    <span class="card-year">2026</span>
+                </div>
+                <div class="card-info">
+                    <div class="card-info-top">
+                        <span class="card-num">Project 04</span>
+                        <h3>Giftshorts</h3>
+                        <p class="card-desc">
+                            팬과 크리에이터를 잇는 영상 선물 플랫폼 — 기한 내 미이행 시 자동 환불까지 설계했습니다.
+                        </p>
+                    </div>
+                    <div class="card-foot">
+                        <div class="card-meta">
+                            <span class="chip">Web</span>
+                            <span class="chip">Fans</span>
+                        </div>
+                        <span class="card-cta">Visit <span class="cta-arrow">&#8594;</span></span>
                     </div>
                 </div>
             </a>
@@ -1175,6 +1281,16 @@
         </div>
     </footer>
 
+    <div class="qr-modal" id="qrModal" aria-hidden="true">
+        <div class="qr-box">
+            <button class="qr-close" id="qrClose" aria-label="닫기">&times;</button>
+            <h4>Daily Script</h4>
+            <p class="qr-sub">QR을 스캔해 바로 접속하세요</p>
+            <img id="qrImg" src="" alt="Daily Script QR 코드" width="224" height="224">
+            <a id="qrLink" href="#" target="_blank" rel="noopener noreferrer"></a>
+        </div>
+    </div>
+
     <div class="page-footer">
         <span class="left">© 2026 · Changhun Lee</span>
         <span class="right">Seoul, KR <span class="dot">●</span> Portfolio</span>
@@ -1212,6 +1328,32 @@
         }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
 
         sections.forEach(s => observer.observe(s));
+
+        // Daily Script "Open" -> QR modal
+        (function () {
+            const modal = document.getElementById('qrModal');
+            if (!modal) return;
+            const img = document.getElementById('qrImg');
+            const linkEl = document.getElementById('qrLink');
+            const closeBtn = document.getElementById('qrClose');
+            function openQr(url) {
+                img.src = 'https://api.qrserver.com/v1/create-qr-code/?size=300x300&margin=8&data=' + encodeURIComponent(url);
+                linkEl.href = url;
+                linkEl.textContent = url;
+                modal.classList.add('open');
+                modal.setAttribute('aria-hidden', 'false');
+            }
+            function closeQr() {
+                modal.classList.remove('open');
+                modal.setAttribute('aria-hidden', 'true');
+            }
+            document.querySelectorAll('[data-qr]').forEach(function (el) {
+                el.addEventListener('click', function (e) { e.preventDefault(); openQr(el.getAttribute('data-qr')); });
+            });
+            closeBtn.addEventListener('click', closeQr);
+            modal.addEventListener('click', function (e) { if (e.target === modal) closeQr(); });
+            document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeQr(); });
+        })();
     </script>
 </body>
 </html>

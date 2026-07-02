@@ -1,0 +1,23 @@
+<svg width="192" height="192" viewBox="0 0 192 192" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="dsbg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2a3a68"/>
+      <stop offset="1" stop-color="#0b1020"/>
+    </linearGradient>
+  </defs>
+  <rect width="192" height="192" rx="38" fill="url(#dsbg)"/>
+  <g transform="rotate(-6 96 100)">
+    <rect x="58" y="44" width="76" height="100" rx="9" fill="#f4f1e6"/>
+    <path d="M58 53 Q58 44 67 44 L125 44 Q134 44 134 53 L134 64 L58 64 Z" fill="#3a4a7a"/>
+    <circle cx="69" cy="54" r="2.6" fill="#ff6b6b"/>
+    <circle cx="78" cy="54" r="2.6" fill="#ffd27a"/>
+    <circle cx="87" cy="54" r="2.6" fill="#4ade80"/>
+    <g fill="#3a4a7a" opacity="0.82">
+      <rect x="70" y="78" width="52" height="5.4" rx="2.7"/>
+      <rect x="70" y="91" width="40" height="5.4" rx="2.7"/>
+      <rect x="70" y="104" width="48" height="5.4" rx="2.7"/>
+      <rect x="70" y="117" width="30" height="5.4" rx="2.7"/>
+    </g>
+  </g>
+  <path d="M142 38 C144 52 148 56 162 58 C148 60 144 64 142 78 C140 64 136 60 122 58 C136 56 140 52 142 38 Z" fill="#ffe9a8"/>
+</svg>
